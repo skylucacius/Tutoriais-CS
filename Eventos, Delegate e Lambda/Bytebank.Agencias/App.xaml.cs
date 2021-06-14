@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Bytebank.Agencias
+namespace ByteBank.Agencias
 {
     /// <summary>
     /// Interaction logic for App.xaml
