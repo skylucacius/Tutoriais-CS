@@ -27,7 +27,6 @@ namespace ByteBank.Agencias
         public MainWindow()
         {
             InitializeComponent();
-
             lstAgencias = new AgenciasListBox(this);
             AtualizarControles();
         }
@@ -36,12 +35,10 @@ namespace ByteBank.Agencias
         {
             lstAgencias.Width = 270;
             lstAgencias.Height = 290;
-
             Canvas.SetTop(lstAgencias, 15);
             Canvas.SetLeft(lstAgencias, 15);
 
             container.Children.Add(lstAgencias);
-
             lstAgencias.Items.Clear();
             var agencias = _contextoBancoDeDados.Agencias.ToList();
             foreach (var agencia in agencias)
@@ -50,7 +47,15 @@ namespace ByteBank.Agencias
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            var resposta = MessageBox.Show ("Você deseja realmente excluir o registro ?", "Confirmar Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (resposta == MessageBoxResult.Yes)
+            {
+                //lógica para exclusão
+            }
+            else
+            {
+                //não faz nada ...
+            }
         }
     }
 }

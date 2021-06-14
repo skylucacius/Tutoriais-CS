@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ByteBank.Agencias"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Canvas Name="container">
+    <Canvas Name="container" Margin="-1,0,1,0">
         <StackPanel Canvas.Top="15" Canvas.Left="290">
             <TextBlock FontWeight="Bold">Número</TextBlock>
             <TextBlock Name="txtNumero"></TextBlock>
