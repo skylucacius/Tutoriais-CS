@@ -42,14 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aula1\R01.PropriedadesAutomaticasSomenteLeitura\csharp-6.cs" />
-    <Compile Include="Aula1\R02.InicializadoresDePropriedadeAutomatica\csharp-6.cs" />
-    <Compile Include="Aula1\R03.MembrosComSintaxeDeExpressao\csharp-6.cs" />
+    <Compile Include="Curso\R01.PropriedadesAutomaticasSomenteLeitura\csharp-6.cs" />
+    <Compile Include="Curso\R02.InicializadoresDePropriedadeAutomatica\csharp-6.cs" />
+    <Compile Include="Curso\R03.MembrosComSintaxeDeExpressao\csharp-6.cs" />
+    <Compile Include="Curso\R05.OperadoresNullCondicionais\csharp-6.cs" />
+    <Compile Include="Curso\R04.UsingStatic\csharp-6.cs" />
+    <Compile Include="Curso\R06. Interpolação de Cadeia de Caracteres\csharp-6.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

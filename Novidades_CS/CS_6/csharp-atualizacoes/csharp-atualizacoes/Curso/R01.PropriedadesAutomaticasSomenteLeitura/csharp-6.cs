@@ -14,7 +14,7 @@ namespace CSharp6.R01
 
             Aluno aluno = new Aluno("Marty", "McFly", new DateTime(1968, 6, 12));
             Console.WriteLine(aluno.Nome);
-            Console.WriteLine(aluno.Sobrenome);
+            Console.WriteLine(aluno.SobreNome);
 
             //aluno.Nome = "Biff";
             //aluno.Sobrenome = "Tannen";
@@ -28,16 +28,14 @@ namespace CSharp6.R01
     class Aluno
     {
         public string Nome { get; }
-
-        public string Sobrenome { get; }
-
+        public string SobreNome { get; }
         public DateTime DataNascimento { get; }
 
-        public Aluno(string nome, string sobrenome, DateTime dataNascimento)
+        public Aluno(string nome, string sobreNome, DateTime dataNascimento)
         {
-            this.Nome = nome;
-            this.Sobrenome = sobrenome;
-            this.DataNascimento = dataNascimento;
+            Nome = nome;
+            SobreNome = sobreNome;
+            DataNascimento = dataNascimento;
         }
 
         //public override string ToString()

@@ -24,11 +24,8 @@ namespace CSharp6.R03
     class Aluno
     {
         public string Nome { get; }
-
         public string Sobrenome { get; }
-
         public DateTime DataNascimento { get; } = new DateTime(1990, 1, 1);
-
         public string NomeCompleto => Nome + " " + Sobrenome; 
         
         public int GetIdade()
@@ -42,7 +39,7 @@ namespace CSharp6.R03
         public Aluno(string nome, string sobrenome, DateTime dataNascimento) :
             this(nome, sobrenome)
         {
-            this.DataNascimento = dataNascimento;
+            DataNascimento = dataNascimento;
         }
 
     }
