@@ -22,12 +22,12 @@ namespace ByteBank.Agencias
     public partial class MainWindow : Window
     {
         private readonly ByteBankEntities _contextoBancoDeDados = new ByteBankEntities();
-        private readonly AgenciasListBox lstAgencias;
+        private readonly ListBox lstAgencias;
 
         public MainWindow()
         {
             InitializeComponent();
-            lstAgencias = new AgenciasListBox(this);
+            lstAgencias = new ListBox();
             AtualizarControles();
         }
 
@@ -38,13 +38,33 @@ namespace ByteBank.Agencias
             Canvas.SetTop(lstAgencias, 15);
             Canvas.SetLeft(lstAgencias, 15);
 
+            lstAgencias.SelectionChanged += new SelectionChangedEventHandler(lstAgencia_SelectionChanged);
+            btnEditar.Click += new RoutedEventHandler(btnEditar_Click);
+
             container.Children.Add(lstAgencias);
+            AtualizarListaDeAgencias();
+        }
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            //criar uma nova janela e abrí-la aqui.
+        }
+        private void AtualizarListaDeAgencias()
+        {
             lstAgencias.Items.Clear();
             var agencias = _contextoBancoDeDados.Agencias.ToList();
             foreach (var agencia in agencias)
                 lstAgencias.Items.Add(agencia);
         }
 
+        private void lstAgencia_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var agenciaSelecionada = (Agencia)lstAgencias.SelectedItem;
+            txtDescricao.Text = agenciaSelecionada.Descricao;
+            txtEndereco.Text = agenciaSelecionada.Endereco;
+            txtNome.Text = agenciaSelecionada.Nome;
+            txtNumero.Text = agenciaSelecionada.Numero;
+            txtTelefone.Text = agenciaSelecionada.Telefone;
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var resposta = MessageBox.Show ("Você deseja realmente excluir o registro ?", "Confirmar Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
