@@ -39,20 +39,12 @@ namespace ByteBank.Agencias
         }
         private void AtualizarControles()
         {
-            RoutedEventHandler dialogResultTrue = (sender,e) => DialogResult = true;
-            RoutedEventHandler dialogResultFalse = (sender,e) => DialogResult = false;
+            RoutedEventHandler dialogResultTrue = (sender, e) => DialogResult = true;
+            RoutedEventHandler dialogResultFalse = (sender, e) => DialogResult = false;
             RoutedEventHandler Fechar = (sender, e) => Close();
 
             btnOk.Click += dialogResultTrue + Fechar;
             btnCancelar.Click += dialogResultFalse + Fechar;
-
-            //Eventos de mudança de texto da cor de fundo do TextBox
-            //txtDescricao.TextChanged += ValidarCampoNulo; //equivalente a txtDescricao.TextChanged += new TextChangedEventHandler(ValidarCampoNulo);
-            //txtEndereco.TextChanged += ValidarCampoNulo;
-            //txtNome.TextChanged += ValidarCampoNulo;
-            //txtNumero.TextChanged += ValidarCampoNulo;
-            //txtTelefone.TextChanged += ValidarCampoNulo;
-            //txtTelefone.TextChanged += ValidarSomenteDigito;
 
             txtDescricao.Validacao += ValidarCampoNulo;
             txtEndereco.Validacao += ValidarCampoNulo;
@@ -60,23 +52,9 @@ namespace ByteBank.Agencias
             txtNumero.Validacao += ValidarCampoNulo;
             txtTelefone.Validacao += ValidarCampoNulo;
             txtTelefone.Validacao += ValidarSomenteDigito;
-
         }
-        //private void ValidarCampoNulo(object sender, TextChangedEventArgs e)
-        //{
-        //    var txt = sender as TextBox;
-        //    txt.Background = string.IsNullOrEmpty(txt.Text) ? new SolidColorBrush(Colors.OrangeRed) : new SolidColorBrush(Colors.White);
-        //}
-        //private void ValidarSomenteDigito(object sender, TextChangedEventArgs e)
-        //{
-        //var txt = sender as TextBox;
 
-        //Func<char, bool> TodosSaoDigitos = c => char.IsDigit(c);
-        //txt.Background = txt.Text.All(TodosSaoDigitos) ? new SolidColorBrush(Colors.OrangeRed) : new SolidColorBrush(Colors.White);
-
-        //txt.Background = txt.Text.All(char.IsDigit) ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.OrangeRed); // cool =)
-        //}
-        private bool ValidarSomenteDigito(string texto) => texto.All(char.IsDigit);
-        private bool ValidarCampoNulo(string texto) => !string.IsNullOrEmpty(texto);
+        private void ValidarSomenteDigito(object sender, ValidacaoEventArgs e) => e.EhValido = e.Text.All(char.IsDigit); 
+        private void ValidarCampoNulo(object sender, ValidacaoEventArgs e) => e.EhValido = !string.IsNullOrEmpty(e.Text);
     }
 }

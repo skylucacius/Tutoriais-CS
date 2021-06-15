@@ -8,21 +8,49 @@ using System.Windows.Media;
 
 namespace ByteBank.Agencias
 {
-    public delegate bool ValidacaoEventHandler(string texto);
+    public delegate void ValidacaoEventHandler(object sender, ValidacaoEventArgs e);
     public class ValidacaoTextBox : TextBox
     {
-        public event ValidacaoEventHandler Validacao;
-        public ValidacaoTextBox()
+        private ValidacaoEventHandler _validacao;
+        public event ValidacaoEventHandler Validacao
         {
-            TextChanged += ValidacaoTextBox_TextChanged;
-        }
-        private void ValidacaoTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (Validacao != null)
+            add
             {
-                var ehValido = Validacao(Text); // Validacao é um evento. Ele respeita o delegate que entra com uma string e retorna um boolean (que no caso é o resultado da validação, para cada textBox ... não é necessário nos preocuparmos com os detalhes de implementação de cada validação)
+                _validacao += value;
+                OnValidacao();
+            }
+            remove
+            {
+                _validacao -= value;
+            }
+        }
+        protected override void OnTextChanged(TextChangedEventArgs e)
+        {
+            base.OnTextChanged(e);
+            OnValidacao();
+        }
+        protected virtual void OnValidacao()
+        {
+            if (_validacao != null)
+            {
+                var listaValidacoes = _validacao.GetInvocationList();
+                var eventArgs = new ValidacaoEventArgs(Text);
+                bool ehValido = true;
+
+                foreach(ValidacaoEventHandler validacao in listaValidacoes)
+                {
+                    validacao(this, eventArgs);
+
+                    if (!eventArgs.EhValido)
+                    {
+                        ehValido = false;
+                        break;
+                    }
+                }
+
                 Background = ehValido ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.OrangeRed);
             }
+
         }
     }
 }
