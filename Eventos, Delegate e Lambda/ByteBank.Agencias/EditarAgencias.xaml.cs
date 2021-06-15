@@ -38,23 +38,57 @@ namespace ByteBank.Agencias
         }
         private void AtualizarControles()
         {
-            //var okEventHandler = (RoutedEventHandler) btnOk_Click + Fechar;
-            //var cancelarEventHandler = (RoutedEventHandler)btnCancelar_Click + Fechar;
+            RoutedEventHandler dialogResultTrue = (sender,e) => DialogResult = true;
+            RoutedEventHandler dialogResultFalse = (sender,e) => DialogResult = false;
+            RoutedEventHandler Fechar = (sender, e) => Close();
 
-            btnOk.Click += (RoutedEventHandler)btnOk_Click + Fechar;
-            btnCancelar.Click += (RoutedEventHandler)btnCancelar_Click + Fechar; //que massinha 
+            btnOk.Click += dialogResultTrue + Fechar;
+            btnCancelar.Click += dialogResultFalse + Fechar; //que massinha 
 
-            //btnOk.Click += new RoutedEventHandler(btnOk_Click);
-            //btnCancelar.Click += new RoutedEventHandler(btnCancelar_Click);
+            //Eventos de mudança de texto da cor de fundo do TextBox
+            txtDescricao.TextChanged += ValidarCampoNulo; //equivalente a txtDescricao.TextChanged += new TextChangedEventHandler(ValidarCampoNulo);
+            //txtDescricao.TextChanged += ConstruirDelegateValidacaoCampoNulo(txtDescricao);
+            //(sender, e) => 
+            //txtDescricao.Background = string.IsNullOrEmpty(txtDescricao.Text) ? new SolidColorBrush(Colors.OrangeRed) : new SolidColorBrush(Colors.White);
 
-            //btnOk.Click += new RoutedEventHandler(Fechar);
-            //btnCancelar.Click += new RoutedEventHandler(Fechar);
+            txtEndereco.TextChanged += ValidarCampoNulo;
+            //txtEndereco.TextChanged += ConstruirDelegateValidacaoCampoNulo(txtEndereco);
+            //(sender, e) =>
+            //txtEndereco.Background = string.IsNullOrEmpty(txtEndereco.Text) ? new SolidColorBrush(Colors.OrangeRed) : new SolidColorBrush(Colors.White);
+
+            txtNome.TextChanged += ValidarCampoNulo;
+            //txtNome.TextChanged += ConstruirDelegateValidacaoCampoNulo(txtNome);
+            //(sender, e) =>
+            //txtNome.Background = string.IsNullOrEmpty(txtNome.Text) ? new SolidColorBrush(Colors.OrangeRed) : new SolidColorBrush(Colors.White);
+
+            txtNumero.TextChanged += ValidarCampoNulo;
+            //txtNumero.TextChanged += ConstruirDelegateValidacaoCampoNulo(txtNumero);
+            //(sender, e) =>
+            //txtNumero.Background = string.IsNullOrEmpty(txtNumero.Text) ? new SolidColorBrush(Colors.OrangeRed) : new SolidColorBrush(Colors.White);
+
+            txtTelefone.TextChanged += ValidarCampoNulo;
+            //txtTelefone.TextChanged += ConstruirDelegateValidacaoCampoNulo(txtTelefone);
+            //(sender, e) =>
+            //txtTelefone.Background = string.IsNullOrEmpty(txtTelefone.Text) ? new SolidColorBrush(Colors.OrangeRed) : new SolidColorBrush(Colors.White);
+
+
         }
-        private void btnOk_Click(object sender, RoutedEventArgs e) => DialogResult = true;
-        private void btnCancelar_Click(object sender, RoutedEventArgs e) => DialogResult = false;
-        private void Fechar(object sender, EventArgs e)
+        private void ValidarCampoNulo(object sender, TextChangedEventArgs e)
         {
-            Close();
+            var txt = sender as TextBox;
+            txt.Background = string.IsNullOrEmpty(txt.Text) ? new SolidColorBrush(Colors.OrangeRed) : new SolidColorBrush(Colors.White);
         }
+
+            
+
+        //private TextChangedEventHandler ConstruirDelegateValidacaoCampoNulo(TextBox txt) =>
+        //    (sender,e) => txt.Background = string.IsNullOrEmpty(txt.Text) ? new SolidColorBrush(Colors.OrangeRed) : new SolidColorBrush(Colors.White);
+
+        //private void btnOk_Click(object sender, RoutedEventArgs e) => DialogResult = true;
+        //private void btnCancelar_Click(object sender, RoutedEventArgs e) => DialogResult = false;
+        //private void Fechar(object sender, EventArgs e)
+        //{
+        //    Close();
+        //}
     }
 }
