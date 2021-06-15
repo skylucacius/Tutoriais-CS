@@ -27,6 +27,7 @@ namespace ByteBank.Agencias
         public MainWindow()
         {
             InitializeComponent();
+
             lstAgencias = new ListBox();
             AtualizarControles();
         }
@@ -38,17 +39,26 @@ namespace ByteBank.Agencias
             Canvas.SetTop(lstAgencias, 15);
             Canvas.SetLeft(lstAgencias, 15);
 
-            lstAgencias.SelectionChanged += new SelectionChangedEventHandler(lstAgencia_SelectionChanged);
-            btnEditar.Click += new RoutedEventHandler(btnEditar_Click);
+            lstAgencias.SelectionChanged += new SelectionChangedEventHandler(lstAgencias_SelectionChanged);
 
             container.Children.Add(lstAgencias);
-            AtualizarListaDeAgencias();
+            //Como adicionei o botão editar e seu evento de click pelo Drag-and-Drop do Visual Studio o evento de click já foi adicionado.
+            //BtnEditar.Click += new RoutedEventHandler(BtnEditar_Click);
+            PreencherAgencias();
         }
-        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        private void lstAgencias_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //criar uma nova janela e abrí-la aqui.
+            var agenciaSelecionada = (Agencia) lstAgencias.SelectedItem;
+
+            txtNumero.Text = agenciaSelecionada.Numero.Trim();
+            txtNome.Text = agenciaSelecionada.Nome.Trim();
+            txtTelefone.Text = agenciaSelecionada.Telefone.Trim();
+            txtEndereco.Text = agenciaSelecionada.Endereco.Trim();
+            txtDescricao.Text = agenciaSelecionada.Descricao.Trim();
+
+            
         }
-        private void AtualizarListaDeAgencias()
+        private void PreencherAgencias()
         {
             lstAgencias.Items.Clear();
             var agencias = _contextoBancoDeDados.Agencias.ToList();
@@ -56,25 +66,47 @@ namespace ByteBank.Agencias
                 lstAgencias.Items.Add(agencia);
         }
 
-        private void lstAgencia_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void BtnExcluir_Click(object sender, RoutedEventArgs e)
         {
-            var agenciaSelecionada = (Agencia)lstAgencias.SelectedItem;
-            txtDescricao.Text = agenciaSelecionada.Descricao;
-            txtEndereco.Text = agenciaSelecionada.Endereco;
-            txtNome.Text = agenciaSelecionada.Nome;
-            txtNumero.Text = agenciaSelecionada.Numero;
-            txtTelefone.Text = agenciaSelecionada.Telefone;
-        }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var resposta = MessageBox.Show ("Você deseja realmente excluir o registro ?", "Confirmar Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (resposta == MessageBoxResult.Yes)
+            var confirmacao = 
+                MessageBox.Show(
+                    "Você deseja realmente excluir este item?",
+                    "Confirmação",
+                    MessageBoxButton.YesNo);
+            if (confirmacao == MessageBoxResult.Yes)
             {
-                //lógica para exclusão
+                //Excluir
             }
             else
             {
-                //não faz nada ...
+                //Não faz nada
+            }
+        }
+
+        private void BtnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            //criar uma nova janela e abrí-la aqui.
+            var agenciaSelecionada = (Agencia)lstAgencias.SelectedItem;
+
+            if (agenciaSelecionada != null)
+            {
+                agenciaSelecionada.Descricao = agenciaSelecionada.Descricao.Trim();
+                agenciaSelecionada.Endereco = agenciaSelecionada.Endereco.Trim();
+                agenciaSelecionada.Nome = agenciaSelecionada.Nome.Trim();
+                agenciaSelecionada.Numero = agenciaSelecionada.Numero.Trim();
+                agenciaSelecionada.Telefone = agenciaSelecionada.Telefone.Trim();
+
+                var janelaEdicao = new EditarAgencias(agenciaSelecionada);
+                var resultado = janelaEdicao.ShowDialog().Value;
+
+                //if (resultado)
+                //{
+                //    //lógica de edição
+                //}
+                //else
+                //{
+                //    //lógica de cancelar
+                //}
             }
         }
     }
