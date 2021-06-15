@@ -96,7 +96,7 @@ namespace ByteBank.Agencias
                 agenciaSelecionada.Numero = agenciaSelecionada.Numero.Trim();
                 agenciaSelecionada.Telefone = agenciaSelecionada.Telefone.Trim();
 
-                var janelaEdicao = new EditarAgencias(agenciaSelecionada);
+                var janelaEdicao = new EdicaoAgencia(agenciaSelecionada);
                 var resultado = janelaEdicao.ShowDialog().Value;
 
                 //if (resultado)
