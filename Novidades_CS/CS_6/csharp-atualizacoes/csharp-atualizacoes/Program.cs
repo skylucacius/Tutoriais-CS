@@ -21,6 +21,7 @@ namespace csharp_atualizacoes
                 "7. Monitorando alterações em propriedades",
                 "8. Filtros de Exceção",
                 "9. Await em blocos catch e finally"
+
             };
 
             Console.WriteLine("ÍNDICE DE PROGRAMAS");
