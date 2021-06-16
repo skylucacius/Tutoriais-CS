@@ -20,8 +20,9 @@ namespace csharp_atualizacoes
                 "6. Interpolação de Cadeia de Caracteres",
                 "7. Monitorando alterações em propriedades",
                 "8. Filtros de Exceção",
-                "9. Await em blocos catch e finally"
-
+                "9. Await em blocos catch e finally",
+                "10. Inicializadores de Índice",
+                "11. Métodos de Extensão para Inicializadores de Coleção"
             };
 
             Console.WriteLine("ÍNDICE DE PROGRAMAS");
@@ -70,6 +71,12 @@ namespace csharp_atualizacoes
                         break;
                     case 9:
                         new CSharp6.R09.Programa().Main();
+                        break;
+                    case 10:
+                        new CSharp6.R10.Programa().Main();
+                        break;
+                    case 11:
+                        new CSharp6.R11.Programa().Main();
                         break;
                     default:
                         break;
