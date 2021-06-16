@@ -52,6 +52,8 @@
     <Compile Include="Curso\R04.UsingStatic\csharp-6.cs" />
     <Compile Include="Curso\R06. Interpolação de Cadeia de Caracteres\csharp-6.cs" />
     <Compile Include="Curso\R07. Monitorando alterações em propriedades\csharp-6.cs" />
+    <Compile Include="Curso\R08. Filtros de Exceção\csharp-6.cs" />
+    <Compile Include="Curso\R09. Await em blocos catch e finally\csharp-6.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
