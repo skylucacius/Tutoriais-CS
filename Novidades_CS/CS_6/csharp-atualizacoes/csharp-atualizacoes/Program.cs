@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace csharp_atualizacoes
 {
     class Program
@@ -16,7 +17,8 @@ namespace csharp_atualizacoes
                 "3. Membros Com Corpo De Expressão",
                 "4. Using Static",
                 "5. Operadores Null Condicionais",
-                "6. Interpolação de Cadeia de Caracteres"
+                "6. Interpolação de Cadeia de Caracteres",
+                "7. Monitorando alterações em propriedades"
             };
 
             Console.WriteLine("ÍNDICE DE PROGRAMAS");
@@ -57,14 +59,18 @@ namespace csharp_atualizacoes
                     case 6:
                         new CSharp6.R06.Programa().Main();
                         break;
+                    case 7:
+                        new CSharp6.R07.Programa().Main();
+                        break;
                     default:
                         break;
                 }
 
                 Console.WriteLine();
                 Console.WriteLine("PRESSIONE UMA TECLA PARA CONTINUAR...");
-                Console.ReadKey();
+                Console.Read();
                 Console.Clear();
+
             } while (line.Length > 0);
         }
     }

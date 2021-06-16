@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{75C8069F-B1E5-41CD-AA4A-7BBC1CCA6C5E}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>csharp_atualizacoes</RootNamespace>
     <AssemblyName>csharp-atualizacoes</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -51,6 +51,7 @@
     <Compile Include="Curso\R05.OperadoresNullCondicionais\csharp-6.cs" />
     <Compile Include="Curso\R04.UsingStatic\csharp-6.cs" />
     <Compile Include="Curso\R06. Interpolação de Cadeia de Caracteres\csharp-6.cs" />
+    <Compile Include="Curso\R07. Monitorando alterações em propriedades\csharp-6.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

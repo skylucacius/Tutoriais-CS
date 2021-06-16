@@ -37,6 +37,7 @@ namespace ByteBank.Agencias
             txtEndereco.Text = _agencia.Endereco;
             txtDescricao.Text = _agencia.Descricao;
         }
+
         private void AtualizarControles()
         {
             RoutedEventHandler dialogResultTrue = (sender, e) => DialogResult = true;
