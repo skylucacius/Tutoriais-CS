@@ -106,7 +106,7 @@ namespace CSharp6.R07
             {
                 if (_telefone != value)
                 {
-                    _telefone = value;
+                    _telefone = value; // teste de mudança
                     //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Fone)));
                     OnPropertyChanged();
                 }
